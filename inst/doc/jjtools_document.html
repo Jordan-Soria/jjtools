@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="José Jordán" />
+
+<meta name="date" content="2022-11-07" />
+
+<title>JJTOOLS Package document</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">JJTOOLS Package document</h1>
+<h4 class="author">José Jordán</h4>
+<h4 class="date">2022-11-07</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jjtools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code></pre></div>
+<div id="vignette-info" class="section level2">
+<h2>Vignette Info</h2>
+<p>Sometimes it is necessary to process a data set to add information of interest or to calculate some value or useful statistic. This simple package allows you to process RNASeq count data obtained by RSubread, which processes BAM files containing the reads aligned with a reference genome. This package is also used for any dataset that contains, along with raw counts, a column called “Gene ID”, with the Gene ID identifier in NCBI (Entrez) format. If you need to modify your Gene ID data, you can use this tool (available online in Ensembl):</p>
+<p><a href="https://www.ensembl.org/biomart/martview/18870173edad33c219d9977902fa95fe">https://www.ensembl.org/biomart/martview/18870173edad33c219d9977902fa95fe</a></p>
+</div>
+<div id="full-exemple-step-by-step" class="section level2">
+<h2>Full exemple step by step</h2>
+<p>Step-by-step analysis of an RNASeq dataset with the jjtools package:</p>
+<div id="step-1-add-info" class="section level3">
+<h3>Step 1: add info</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addinfo</span>(data_RNASeq_raw_counts,hg38) <span class="co">#Selected hg38_RefSeq_exon dataset (in Rsubread folder)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hg38 RefSeq file from the Rsubread package will be use as default to extract the</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; chromosome info and strand in which the GeneID identifier appears</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      GeneID  Chr Start   End Strand</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 100287102 chr1 11874 12227      +</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 100287102 chr1 12613 12721      +</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 100287102 chr1 13221 14409      +</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    653635 chr1 14362 14829      -</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    653635 chr1 14970 15038      -</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    653635 chr1 15796 15947      -</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FINAL TABLE GENERATED:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       GeneID `Gene name`       Symbol Chr   Strand    S1    S2    S3    S4    S5</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1         2 alpha-2-macroglo~ A2M    chr12 -          1     1     1     1     1</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2         3 alpha-2-macroglo~ A2MP1  chr12 -          4     9     0     1     0</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3        10 N-acetyltransfer~ NAT2   chr8  +          5     0     0     1     0</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4        15 aralkylamine N-a~ AANAT  chr17 +         10     0     0     1     0</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5        20 ATP binding cass~ ABCA2  chr9  -         20     0     9     1     0</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6        50 aconitase 2       ACO2   chr22 +         60     0     0     1     0</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7        55 acid phosphatase~ ACP3   chr3  +        100   990   900     1   800</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8       100 adenosine deamin~ ADA    chr20 -        100     0     0     1   199</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9      1000 cadherin 2        CDH2   chr18 -        700     0     0     1     0</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10      2000 E74 like ETS tra~ ELF4   chrX  -       1000     0     0     1     0</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11      3050 hemoglobin subun~ HBZ    chr16 +       1000     0    90    10     0</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 100507050 trophoblast glyc~ TPBGL  chr11 +       2000     0     0   980     0</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Final table generated with your raw_counts + extra information</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # of deleted rows whose counts are in ALL data columns = 0:</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; In the **raw_counts_addinfo** object you have the table available</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TIP: to save on PC use the following command in R (&quot;utils&quot; package):</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; write.table(raw_counts_addinfo, file=&quot;raw_counts_addinfo.csv&quot;, sep =&quot;;&quot;)</span></span></code></pre></div>
+<p>You can add an addicional info with the jjtools command <em>extract()</em>. This function allows to extract from, for example hg38_RefSeq_exon dataset, the length of the gene (in bp and kb).</p>
+<style>
+p.comment {
+background-color: #f94545;
+color:white;
+padding: 0px;
+border: 1px solid black;
+margin-left: 0px;
+text-align: center;
+border-radius: 1px;
+font-style: italic;
+}
+</style>
+<p class="comment">
+<em>You must transform to character both columns and after join both tables</em>
+</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use the function extract() to obtain gene data from Rsubread package and obtain the gene_lenght_file&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>datastart <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;GeneID&quot;</span><span class="ot">=</span>hg38<span class="sc">$</span>GeneID,<span class="st">&quot;Start&quot;</span><span class="ot">=</span>hg38<span class="sc">$</span>Start)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dataend <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;GeneID&quot;</span><span class="ot">=</span>hg38<span class="sc">$</span>GeneID,<span class="st">&quot;End&quot;</span><span class="ot">=</span>hg38<span class="sc">$</span>End)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setDT</span>(datastart)[ , .SD[<span class="fu">which.min</span>(Start)], by <span class="ot">=</span> <span class="st">&quot;GeneID&quot;</span>]  <span class="ot">-&gt;</span> min_start</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setDT</span>(dataend)[ , .SD[<span class="fu">which.max</span>(End)], by <span class="ot">=</span> <span class="st">&quot;GeneID&quot;</span>]  <span class="ot">-&gt;</span> max_start</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(max_start,min_start, <span class="at">by=</span><span class="st">&quot;GeneID&quot;</span>)<span class="ot">-&gt;</span>joined_max_min_gene</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="st">&quot;GeneID&quot;</span><span class="ot">=</span>joined_max_min_gene<span class="sc">$</span>GeneID, <span class="st">&quot;Gene_lenght&quot;</span><span class="ot">=</span>joined_max_min_gene<span class="sc">$</span>End<span class="sc">-</span>joined_max_min_gene<span class="sc">$</span>Start) <span class="ot">-&gt;</span> gene_lentgh</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>gene_lentgh<span class="sc">$</span>Gene_lenght<span class="sc">/</span><span class="dv">1000</span> <span class="ot">-&gt;</span> gene_lentgh<span class="sc">$</span>kb_Gene_lenght</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>gene_lentgh <span class="ot">-&gt;</span> gene_lenght_file</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(gene_lenght_file, <span class="at">Gene_lenght =</span> <span class="fu">as.character</span>(Gene_lenght),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">kb_Gene_lenght =</span> <span class="fu">as.character</span>(kb_Gene_lenght))<span class="ot">-&gt;</span>gene_lenght_file2</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(raw_counts_addinfo,gene_lenght_file2, </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">by=</span><span class="st">&quot;GeneID&quot;</span>)<span class="ot">-&gt;</span>raw_counts_addinfo2</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>raw_counts_addinfo2[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">12</span>)] <span class="co">#See that the last two columns are &#39;chr&#39;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 8</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       GeneID `Gene name`               Symbol Chr   Strand    S1 Gene_~1 kb_Ge~2</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1         2 alpha-2-macroglobulin     A2M    chr12 -          1 48254   48.254 </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2         3 alpha-2-macroglobulin ps~ A2MP1  chr12 -          4 5674    5.674  </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3        10 N-acetyltransferase 2     NAT2   chr8  +          5 9974    9.974  </span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4        15 aralkylamine N-acetyltra~ AANAT  chr17 +         10 17937   17.937 </span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5        20 ATP binding cassette sub~ ABCA2  chr9  -         20 21740   21.74  </span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6        50 aconitase 2               ACO2   chr22 +         60 59864   59.864 </span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7        55 acid phosphatase 3        ACP3   chr3  +        100 50935   50.935 </span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8       100 adenosine deaminase       ADA    chr20 -        100 32711   32.711 </span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9      1000 cadherin 2                CDH2   chr18 -        700 244602  244.602</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10      2000 E74 like ETS transcripti~ ELF4   chrX  -       1000 45793   45.793 </span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11      3050 hemoglobin subunit zeta   HBZ    chr16 +       1000 12452   12.452 </span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 100507050 trophoblast glycoprotein~ TPBGL  chr11 +       2000 2799    2.799  </span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with abbreviated variable names 1: Gene_lenght, 2: kb_Gene_lenght</span></span></code></pre></div>
+</div>
+<div id="step-2-counts-normalization-pkm-or-tpm-method" class="section level3">
+<h3>Step 2: counts normalization (pkm or tpm method)</h3>
+<p>We calculate the pkm or tpm from our raw counts; in this example we will use tpm and we will use raw_counts_addinfo object. For more info about pkm and tpm, see help functions ?pkm_method() and ?tpm_method().</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tpm_method</span>(raw_counts_addinfo,gene_lenght_file)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    GeneID          S1      S2      S3      S4     S5 Gene ~1 Symbol Chr   Strand</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2             25.0    985.    818.  5.90e1 9.50e2 alpha-~ A2M    chr12 -     </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 3            851.   75377.      0   5.02e2 0      alpha-~ A2MP1  chr12 -     </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 10           605.       0       0   2.85e2 0      N-acet~ NAT2   chr8  +     </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 15           673.       0       0   1.59e2 0      aralky~ AANAT  chr17 +     </span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 20          1111.       0   16342.  1.31e2 0      ATP bi~ ABCA2  chr9  -     </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 50          1210.       0       0   4.75e1 0      aconit~ ACO2   chr22 +     </span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 55          2370.  923639. 697519.  5.59e1 7.20e5 acid p~ ACP3   chr3  +     </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 100         3691.       0       0   8.70e1 2.79e5 adenos~ ADA    chr20 -     </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1000        3455.       0       0   1.16e1 0      cadher~ CDH2   chr18 -     </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2000       26365.       0       0   6.21e1 0      E74 li~ ELF4   chrX  -     </span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 3050       96959.       0  285321.  2.29e3 0      hemogl~ HBZ    chr16 +     </span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 100507050 862685.       0       0   9.96e5 0      tropho~ TPBGL  chr11 +     </span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with abbreviated variable name 1: `Gene name`</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculated TPM value of each gene per sample</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Available in **tpm_sample** object</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing that the sum of each column is = 1000000, for example with column S1:</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(tpm_sample<span class="sc">$</span>S1)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1e+06</span></span></code></pre></div>
+<p>You can calculate some statistical values to see the average value of each gene between the different samples with the calc() function:<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">calc</span>(tpm_sample)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 13</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    GeneID      S1     S2     S3     S4     S5 Gene ~1 Symbol Chr   Strand   Mean</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2       2.50e1 9.85e2 8.18e2 5.90e1 9.50e2 alpha-~ A2M    chr12 -      5.67e2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 3       8.51e2 7.54e4 0      5.02e2 0      alpha-~ A2MP1  chr12 -      1.53e4</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 10      6.05e2 0      0      2.85e2 0      N-acet~ NAT2   chr8  +      1.78e2</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 15      6.73e2 0      0      1.59e2 0      aralky~ AANAT  chr17 +      1.66e2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 20      1.11e3 0      1.63e4 1.31e2 0      ATP bi~ ABCA2  chr9  -      3.52e3</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 50      1.21e3 0      0      4.75e1 0      aconit~ ACO2   chr22 +      2.52e2</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 55      2.37e3 9.24e5 6.98e5 5.59e1 7.20e5 acid p~ ACP3   chr3  +      4.69e5</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 100     3.69e3 0      0      8.70e1 2.79e5 adenos~ ADA    chr20 -      5.65e4</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1000    3.46e3 0      0      1.16e1 0      cadher~ CDH2   chr18 -      6.93e2</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2000    2.64e4 0      0      6.21e1 0      E74 li~ ELF4   chrX  -      5.29e3</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 3050    9.70e4 0      2.85e5 2.29e3 0      hemogl~ HBZ    chr16 +      7.69e4</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 100507~ 8.63e5 0      0      9.96e5 0      tropho~ TPBGL  chr11 +      3.72e5</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 2 more variables: StDev &lt;dbl&gt;, SEM &lt;dbl&gt;, and abbreviated variable</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   name 1: `Gene name`</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculated &quot;Mean&quot;, &quot;Standard deviation&quot; and &quot;Mean Standard Error&quot; by GeneID</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Available in **norm_counts_added_stats** object</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>norm_counts_added_stats[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">11</span><span class="sc">:</span><span class="dv">13</span>)]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 12 x 7</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    GeneID          S1      S2 `Gene name`                     Mean  StDev    SEM</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2             25.0    985. alpha-2-macroglobulin         5.67e2 4.84e2 1.40e2</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 3            851.   75377. alpha-2-macroglobulin pseudo~ 1.53e4 3.36e4 9.69e3</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 10           605.       0  N-acetyltransferase 2         1.78e2 2.69e2 7.76e1</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 15           673.       0  aralkylamine N-acetyltransfe~ 1.66e2 2.91e2 8.41e1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 20          1111.       0  ATP binding cassette subfami~ 3.52e3 7.18e3 2.07e3</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 50          1210.       0  aconitase 2                   2.52e2 5.36e2 1.55e2</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 55          2370.  923639. acid phosphatase 3            4.69e5 4.36e5 1.26e5</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 100         3691.       0  adenosine deaminase           5.65e4 1.24e5 3.59e4</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1000        3455.       0  cadherin 2                    6.93e2 1.54e3 4.46e2</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2000       26365.       0  E74 like ETS transcription f~ 5.29e3 1.18e4 3.40e3</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 3050       96959.       0  hemoglobin subunit zeta       7.69e4 1.24e5 3.57e4</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 100507050 862685.       0  trophoblast glycoprotein like 3.72e5 5.11e5 1.48e5</span></span></code></pre></div>
+</div>
+<div id="step-3-filter-by-genes-of-interest-surfaceome" class="section level3">
+<h3>Step 3: filter by genes of interest (surfaceome)</h3>
+<p>You can filter by surfaceome genes; in jjtools there is a dataset () with 2911 genes ready to use with the surface() function</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">surface</span>(norm_counts_added_stats) <span class="co">#We use the result in the previous chunk -calc()-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Joining, by = &quot;GeneID&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Result available in **counts_filtered_by_surfaceome** object</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>counts_filtered_by_surfaceome</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 21</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      GeneID      S1    S2     S3     S4    S5 Gene ~1 Symbol Chr   Strand   Mean</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        20   1111.     0 16342. 1.31e2     0 ATP bi~ ABCA2  chr9  -      3.52e3</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1000   3455.     0     0  1.16e1     0 cadher~ CDH2   chr18 -      6.93e2</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 100507050 862685.     0     0  9.96e5     0 tropho~ TPBGL  chr11 +      3.72e5</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 10 more variables: StDev &lt;dbl&gt;, SEM &lt;dbl&gt;, `UniProt name` &lt;chr&gt;,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   `UniProt accession` &lt;chr&gt;, Description &lt;chr&gt;, `Gene symbol UniProt` &lt;chr&gt;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   `Surfaceome Label Source` &lt;chr&gt;, `Length protein` &lt;dbl&gt;,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   `TM domains` &lt;dbl&gt;, Signalpeptide &lt;dbl&gt;, and abbreviated variable name</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   1: `Gene name`</span></span></code></pre></div>
+</div>
+<div id="step-4a-find-out-the-most-informatives-data-in-your-dataset" class="section level3">
+<h3>Step 4a: Find out the most informatives data in your dataset</h3>
+<p>With inform() you can find out the most informatives in your dataset. In this case we will use tpm_sample object obtained in Step 2:</p>
+<p class="comment">
+<em>Remember that you can obviate the value of filter; by default is configured to be = 1</em>
+</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First of all you MUST use only the matrix with the dataset, so you must remove columns without data:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tpm_sample[,<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">-&gt;</span> new_sample</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a cut-off value to filter the dataset. In this case we will use 10000:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>filter_value<span class="ot">=</span><span class="dv">10000</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">inform</span>(new_sample,filter_value)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WAIT... BE PATIENT... O.o o.O</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; PERCENTAGE VALUES FOR EACH CELL ADDED:</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 0.7142857 0.8571429 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECTED CELLS (from + to - informative in the dataset):</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;S1&quot;    &quot;S2&quot;    &quot;S3&quot;    &quot;S5&quot;    &quot;S1.1&quot;  &quot;S1.2&quot;  &quot;S1.3&quot;  &quot;S1.4&quot;  &quot;S1.5&quot; </span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;S1.6&quot;  &quot;S1.7&quot;  &quot;S1.8&quot;  &quot;S1.9&quot;  &quot;S1.10&quot; &quot;S1.11&quot; &quot;S1.12&quot; &quot;S1.13&quot; &quot;S1.14&quot;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;S1.15&quot; &quot;S1.16&quot;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; PLOTING :)</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div id="step-4b-find-out-the-group-of-most-informatives-data-in-your-dataset" class="section level5">
+<h5>Step 4b: Find out the group of most informatives data in your dataset</h5>
+<p>Now we will compute something similar to the previous section (4a). In this case we will obtain the group of columns (cells) that maximizes unique genes expressed. We will use an online dataset for our comodity:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_cells <span class="ot">&lt;-</span> <span class="fu">read_table2</span>(<span class="st">&quot;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&quot;</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_names =</span> <span class="cn">FALSE</span>, <span class="at">skip =</span> <span class="dv">5</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: `read_table2()` was deprecated in readr 2.0.0.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Please use `read_table()` instead.</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Column specification --------------------------------------------------------</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; cols(</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .default = col_double(),</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   X1 = col_character(),</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   X2 = col_character()</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; )</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Use `spec()` for the full column specifications.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: 7904 parsing failures.</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; row col   expected     actual                                                                                                          file</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   2  -- 59 columns 68 columns &#39;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&#39;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3  -- 59 columns 55 columns &#39;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&#39;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   4  -- 59 columns 28 columns &#39;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&#39;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5  -- 59 columns 68 columns &#39;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&#39;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   6  -- 59 columns 68 columns &#39;https://www.ebi.ac.uk/gxa/experiments-content/E-PROT-25/resources/ExperimentDownloadSupplier.Proteomics/tsv&#39;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ... ... .......... .......... .............................................................................................................</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; See problems(...) for more details.</span></span></code></pre></div>
+<p>First of all, we processed the file. We remove the NAs and filter the number of genes by surfaceome:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replace</span>(data_cells, <span class="fu">is.na</span>(data_cells), <span class="dv">0</span>) <span class="ot">-&gt;</span> file_line_cells_NA</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>WantedData<span class="ot">=</span>file_line_cells_NA[file_line_cells_NA<span class="sc">$</span>X2 <span class="sc">%in%</span> surfy<span class="sc">$</span><span class="st">`</span><span class="at">Gene symbol UniProt</span><span class="st">`</span>, ]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>WantedData</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 604 x 59</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    X1        X2        X3     X4     X5     X6     X7     X8    X9    X10    X11</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 ENSG0000~ TSPA~   2681   1390    491   6399 9.73e3    166  9854 6.58e3    715</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 ENSG0000~ ENPP4   8394   1395  19006   5593 1.42e3    873  2190 6.28e3  20435</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 ENSG0000~ M6PR   34663   9508  73354 280672 3.50e5 112521 50956 2.44e5  42279</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 ENSG0000~ TFPI    2690   5127     24   3366 1.17e3   9067 12959 8.01e2    958</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 ENSG0000~ SLC7~  15544   3041  79969  14598 2.28e3   7696  1426 3.42e3    252</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 ENSG0000~ PLXN~    949   1744   1758    210 1.15e3    189   257 1.58e3    361</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 ENSG0000~ CD38    2904   4644 167132    472 1.53e3   2454 41455 1.86e3   6725</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 ENSG0000~ ITGAL     67   2311    250    715 2.53e4  18274   201 7.12e2    501</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 ENSG0000~ ITGA3 233246 246115 227570 650761 1.49e5  12897 16161 1.23e6 344733</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 ENSG0000~ LAMP2 107444 145769 373649 238140 1.01e6 108995 51112 8.20e5  72473</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 594 more rows, and 48 more variables: X12 &lt;dbl&gt;, X13 &lt;dbl&gt;,</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X14 &lt;dbl&gt;, X15 &lt;dbl&gt;, X16 &lt;dbl&gt;, X17 &lt;dbl&gt;, X18 &lt;dbl&gt;, X19 &lt;dbl&gt;,</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X20 &lt;dbl&gt;, X21 &lt;dbl&gt;, X22 &lt;dbl&gt;, X23 &lt;dbl&gt;, X24 &lt;dbl&gt;, X25 &lt;dbl&gt;,</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X26 &lt;dbl&gt;, X27 &lt;dbl&gt;, X28 &lt;dbl&gt;, X29 &lt;dbl&gt;, X30 &lt;dbl&gt;, X31 &lt;dbl&gt;,</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X32 &lt;dbl&gt;, X33 &lt;dbl&gt;, X34 &lt;dbl&gt;, X35 &lt;dbl&gt;, X36 &lt;dbl&gt;, X37 &lt;dbl&gt;,</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X38 &lt;dbl&gt;, X39 &lt;dbl&gt;, X40 &lt;dbl&gt;, X41 &lt;dbl&gt;, X42 &lt;dbl&gt;, X43 &lt;dbl&gt;,</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   X44 &lt;dbl&gt;, X45 &lt;dbl&gt;, X46 &lt;dbl&gt;, X47 &lt;dbl&gt;, X48 &lt;dbl&gt;, X49 &lt;dbl&gt;, ...</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#Now you can apply tpm_method() function in jjtools or other. Or use simply these values, as in this example to ilustrate the group() function in jjtools</span></span></code></pre></div>
+<p>Now we will specify in <em>group()</em> our matrix, the number of simulations (1000), the cut-off value to filter the matrix data to binary (250), the number of cells to select (10), the set.seed value (337 for example) and if the 1st column is when start our matrix data (in this cause must be 3 because we have 2 columns with info -gene names and code-)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group</span>(WantedData,<span class="dv">1000</span>,<span class="dv">250</span>,<span class="dv">10</span>,<span class="dv">337</span>,<span class="dv">3</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; PLEASE, BE PATIENT WITH n &gt; 1000 o.O</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; It is highly recommended to use an n &lt; 50,000</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; /////////////////////////////////////////////</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grep(names(hjkk12), colnames(jj)): argument &#39;pattern&#39; has length &gt; 1</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and only the first element will be used</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grep(names(hjkk16), colnames(jj)): argument &#39;pattern&#39; has length &gt; 1</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and only the first element will be used</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ||||||||||||||........................... 1/3</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       MOST INFORMATIVE GROUP OF CELLS</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; |||||||||||||||||||||||||||.............. 2/3</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              SUBSAMPLING CELLS</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; socket cluster with 3 nodes on host &#39;localhost&#39;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ||||||||||||||||||||||||||||||||||||||||| 3/3</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  PLOTTING</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; Plots saved in these R objects: qplot_unique_expression_profile, plot_surfaceoma and qgraph. In names_group_cells are the names of cells</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>names_group_cells</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;X3&quot;  &quot;X59&quot; &quot;X29&quot; &quot;X16&quot; &quot;X44&quot; &quot;X6&quot;  &quot;X9&quot;  &quot;X22&quot; &quot;X7&quot;  &quot;X12&quot;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you select some rows, the function will be show only these genes. For example writing calc(tpm_sample[1:8,])<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

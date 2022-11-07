@@ -1,0 +1,16 @@
+citHeader("To cite jtools in publications, please use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "jjtools: RNASeq tools for counts",
+  author   = as.person("Jose Jordan Soria"),
+  organization  = "I2SYSBIO-UV EvoSalud",
+  year     = "2022",
+  url      = "https://github.com/Jordan-Soria/jjtools",
+  note = "R package version 0.1.0",
+  journal = "No published",
+  textVersion = paste("Jordán-Soria, J., Sanjuán R. (2022). jjtools: RNASeq tools for counts. R package version 0.1.0.
+  https://github.com/Jordan-Soria/jjtools "
+
+  )
+)
